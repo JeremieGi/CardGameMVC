@@ -1,4 +1,4 @@
-package com.example.cardgamemvc.model;
+package com.example.cardgamemvc.Game.Model;
 
 import java.util.Collections;
 import java.util.List;
@@ -34,7 +34,7 @@ public class Deck {
     /**
      * Mélange le jeu
      */
-    private void shuffle() {
+    public void shuffle() {
 
         // Objet random qui va permettre d'avoir un entier aléatoire entre 0 et 51
         Random random = new Random();
@@ -49,7 +49,7 @@ public class Deck {
      * Tire la première carte du paquet
      * @return
      */
-    private PlayingCard removeTopCard(){
+    public PlayingCard removeTopCard(){
         return aCards.remove(0);
     }
 
@@ -57,7 +57,7 @@ public class Deck {
      * Remet la carte dans le paquet
      * @param oCardP
      */
-    private void returnCardToDeck(PlayingCard oCardP){
+    public void returnCardToDeck(PlayingCard oCardP){
         aCards.add(oCardP);
     }
 

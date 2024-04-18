@@ -1,4 +1,4 @@
-package com.example.cardgamemvc.model;
+package com.example.cardgamemvc.Game.Model;
 
 public enum Rank {
 
