@@ -1,12 +1,10 @@
 package com.example.cardgamemvc.Game.Controller;
 
 import com.example.cardgamemvc.Game.Evaluators.GameEvaluator;
-import com.example.cardgamemvc.Game.Evaluators.HighCardGameEvaluator;
 import com.example.cardgamemvc.Game.Model.Deck;
 import com.example.cardgamemvc.Game.Model.Player;
 import com.example.cardgamemvc.Game.Model.PlayingCard;
-import com.example.cardgamemvc.Game.View.GameViewable;
-import com.example.cardgamemvc.Game.View.MainActivity;
+import com.example.cardgamemvc.Game.View.IGameViewable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,12 +12,14 @@ import java.util.List;
 public class GameController {
 
 
+
+
     enum GameState {
         AddingsPlayers, CardsDealt, WinnerRevealed
     }
 
     // Echange avec la vue
-    GameViewable oView;
+    IGameViewable oView;
 
     // Echange avec le Model
     Deck oDeck;
@@ -32,7 +32,7 @@ public class GameController {
 
     GameEvaluator oEvaluator;
 
-    public GameController(GameViewable viewP, Deck deckP, GameEvaluator oEvaluatorP) {
+    public GameController(IGameViewable viewP, Deck deckP, GameEvaluator oEvaluatorP) {
 
         this.oView = viewP;
         this.oDeck = deckP;
@@ -46,28 +46,28 @@ public class GameController {
         this.oEvaluator = oEvaluatorP;
     }
 
+    public void initPlayer() {
+        aPlayers.clear();
+    }
+    /*
     public void run(){
-
-        while (oGameState == GameState.AddingsPlayers) {
-            oView.promptForPlayerName();
-        }
 
         switch (oGameState) {
 
             // Cartes distribuées
             case CardsDealt:
-                oView.promptForFlip();
+                oView.showCardForPlayer();
                 break;
 
             // Gagnant de la partie connu
             case WinnerRevealed:
-                oView.promptForNewGame();
+                oView.showFaceDownCardForPlayer();
                 break;
 
         }
 
     }
-
+*/
     /**
      * Ajoute un joueur
      * @param sPlayerNameP : nom du joueur saisi dans l'UI
@@ -76,7 +76,8 @@ public class GameController {
         if (oGameState == GameState.AddingsPlayers) {
             Player p = new Player(sPlayerNameP);
             aPlayers.add(p);
-            oView.showPlayerName(aPlayers.size(),sPlayerNameP);
+            int nNbPlayer = aPlayers.size();
+            oView.showPlayersNames(nNbPlayer,sPlayerNameP);
         }
     }
 
@@ -84,6 +85,8 @@ public class GameController {
      * Démarre le jeu
      */
     public void startGame(){
+
+
 
         // Si les cartes ne sont pas distribuées
         if (oGameState != GameState.CardsDealt) {
@@ -105,7 +108,7 @@ public class GameController {
             // Etat = jeu distribué
             oGameState = GameState.CardsDealt;
         }
-        this.run();
+        //this.run();
     }
 
     /**
@@ -130,7 +133,6 @@ public class GameController {
         rebuildDeck();
 
         oGameState = GameState.WinnerRevealed; // Le gagnant est connu à cet instant
-        this.run();
 
     }
 
@@ -151,6 +153,9 @@ public class GameController {
     private void displayWinner() {
         oView.showWinner(oWinner.getsPlayerName());
     }
+
+
+
 
     /**
      * Détermine le gagnant

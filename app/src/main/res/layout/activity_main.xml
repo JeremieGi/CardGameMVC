@@ -1,50 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.fragment.app.FragmentContainerView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Game.View.MainActivity"
-    android:orientation="vertical">
-
-    <EditText
-        android:id="@+id/txtPlayerName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:width="300dp"
-        android:text="@string/player1"
-        android:autofillHints="name"
-        android:inputType="text"
-        tools:ignore="LabelFor" />
-
-    <Button
-        android:id="@+id/btnAddPlayer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/add_player"
-         />
-
-    <Button
-        android:id="@+id/btnRun"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/run"
-        />
-
-    <Button
-        android:id="@+id/btnFlip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/flip"/>
-
-
-    <EditText
-        android:id="@+id/txtGame"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:width="300dp"
-        android:text="@string/game_terminal"
-        android:autofillHints="name"
-        android:inputType="textMultiLine"
-        tools:ignore="LabelFor" />
-
-</androidx.appcompat.widget.LinearLayoutCompat>
+    android:name="com.example.cardgamemvc.Game.View.WelcomeFragment" />
