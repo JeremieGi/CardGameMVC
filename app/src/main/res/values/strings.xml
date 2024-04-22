@@ -1,14 +1,10 @@
 <resources>
     <string name="app_name">CardGameMVC</string>
-    <string name="game_terminal">Game Terminal</string>
-    <string name="flip">Flip</string>
-    <string name="add_player">Add player</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="messageBienvenue">Welcome to an educational card game. This is about understanding MVC pattern design.</string>
     <string name="play">Play</string>
     <string name="name_of_player_1">Name of Player 1</string>
     <string name="player_1_card">Player 1 Card</string>
     <string name="name_of_player_2">Name of Player 2</string>
     <string name="player_2_card">Player 2 Card</string>
+    <string name="quit">Quit</string>
 </resources>

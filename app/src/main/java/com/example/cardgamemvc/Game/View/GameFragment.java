@@ -1,7 +1,6 @@
 package com.example.cardgamemvc.Game.View;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;

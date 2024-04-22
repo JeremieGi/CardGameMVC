@@ -12,12 +12,6 @@ import java.util.List;
 public class GameController {
 
 
-
-
-    enum GameState {
-        AddingsPlayers, CardsDealt, WinnerRevealed
-    }
-
     // Echange avec la vue
     IGameViewable oView;
 
@@ -28,8 +22,6 @@ public class GameController {
 
     // Variables propres au controller
 
-    GameState oGameState;
-
     GameEvaluator oEvaluator;
 
     public GameController(IGameViewable viewP, Deck deckP, GameEvaluator oEvaluatorP) {
@@ -39,7 +31,6 @@ public class GameController {
 
         this.aPlayers = new ArrayList<Player>();
 
-        oGameState = GameState.AddingsPlayers;
 
         this.oView.setController(this);
 
@@ -49,36 +40,18 @@ public class GameController {
     public void initPlayer() {
         aPlayers.clear();
     }
-    /*
-    public void run(){
 
-        switch (oGameState) {
-
-            // Cartes distribuées
-            case CardsDealt:
-                oView.showCardForPlayer();
-                break;
-
-            // Gagnant de la partie connu
-            case WinnerRevealed:
-                oView.showFaceDownCardForPlayer();
-                break;
-
-        }
-
-    }
-*/
     /**
      * Ajoute un joueur
      * @param sPlayerNameP : nom du joueur saisi dans l'UI
      */
     public void addPlayer (String sPlayerNameP){
-        if (oGameState == GameState.AddingsPlayers) {
-            Player p = new Player(sPlayerNameP);
-            aPlayers.add(p);
-            int nNbPlayer = aPlayers.size();
-            oView.showPlayersNames(nNbPlayer,sPlayerNameP);
-        }
+
+        Player p = new Player(sPlayerNameP);
+        aPlayers.add(p);
+        int nNbPlayer = aPlayers.size();
+        oView.showPlayersNames(nNbPlayer,sPlayerNameP);
+
     }
 
     /**
@@ -86,29 +59,27 @@ public class GameController {
      */
     public void startGame(){
 
-
-
         // Si les cartes ne sont pas distribuées
-        if (oGameState != GameState.CardsDealt) {
-            // Mélange le paquet
-            oDeck.shuffle();
 
-            int nIndexPlayer = 1;
+        // Mélange le paquet
+        oDeck.shuffle();
 
-            // Pour chaque joueur
-            for (Player p : aPlayers){
-                // Distribue une carte
-                PlayingCard card = oDeck.removeTopCard();
-                p.addCardToHand(card);
-                //
-                oView.showFaceDownCardForPlayer(nIndexPlayer, p.getsPlayerName());
+        int nIndexPlayer = 1;
 
-                nIndexPlayer++;
-            }
-            // Etat = jeu distribué
-            oGameState = GameState.CardsDealt;
+        // Pour chaque joueur
+        for (Player p : aPlayers){
+            // Distribue une carte
+            PlayingCard card = oDeck.removeTopCard();
+            p.addCardToHand(card);
+            //
+            oView.showFaceDownCardForPlayer(nIndexPlayer, p.getsPlayerName());
+
+            nIndexPlayer++;
         }
-        //this.run();
+        // Etat = jeu distribué
+
+
+
     }
 
     /**
@@ -132,7 +103,6 @@ public class GameController {
         displayWinner();
         rebuildDeck();
 
-        oGameState = GameState.WinnerRevealed; // Le gagnant est connu à cet instant
 
     }
 

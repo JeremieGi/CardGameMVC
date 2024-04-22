@@ -25,9 +25,8 @@ public class PlayingCard {
         return bFaceUp;
     }
 
-    public boolean flip() {
+    public void flip() {
         bFaceUp = !bFaceUp;
-        return bFaceUp;
     }
 
 }

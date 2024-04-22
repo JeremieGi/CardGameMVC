@@ -7,7 +7,7 @@ public enum Suit {
     SPADES(3),
     CLUBS(4);
 
-    int suit;
+    final int suit;
 
     private Suit(int value) {
         suit = value;
