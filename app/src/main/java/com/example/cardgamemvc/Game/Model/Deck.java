@@ -1,33 +1,16 @@
 package com.example.cardgamemvc.Game.Model;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-public class Deck {
+/**
+ * Tas de carte
+ */
+public abstract class Deck {
 
-    private List<PlayingCard> aCards;
-
-    public Deck(){
-
-        // Crée toutes les cartes
-        for (Rank r : Rank.values()){
-            for (Suit s : Suit.values()){
-                PlayingCard oCard = new PlayingCard(r,s);
-                aCards.add(oCard);
-            }
-        }
-
-        // Mélange
-        shuffle();
-
-    }
-
-
-    // ------- GETTER --------------------
-    public List<PlayingCard> getaCards() {
-        return aCards;
-    }
+    protected List<PlayingCard> aCards = new ArrayList<PlayingCard>();
 
 
 
@@ -47,7 +30,7 @@ public class Deck {
 
     /**
      * Tire la première carte du paquet
-     * @return
+     * @return : première carte du paquet
      */
     public PlayingCard removeTopCard(){
         return aCards.remove(0);

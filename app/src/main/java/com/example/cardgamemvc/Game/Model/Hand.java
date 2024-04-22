@@ -1,5 +1,6 @@
 package com.example.cardgamemvc.Game.Model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -9,6 +10,9 @@ public class Hand {
 
     private List<PlayingCard> aCards;
 
+    public Hand() {
+        this.aCards = new ArrayList<>();
+    }
 
     public void addCard(PlayingCard oCardP){
         aCards.add(oCardP);

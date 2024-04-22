@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">CardGameMVC</string>
+    <string name="game_terminal">Game Terminal</string>
+    <string name="flip">Flip</string>
+    <string name="run">Run</string>
+    <string name="add_player">Add player</string>
+    <string name="player1">Player1</string>
 </resources>

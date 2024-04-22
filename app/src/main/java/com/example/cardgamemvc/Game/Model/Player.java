@@ -2,9 +2,10 @@ package com.example.cardgamemvc.Game.Model;
 
 public class Player {
 
+
     private String sPlayerName;
 
-    private Hand oHand;
+    private Hand oHand = new Hand();
 
     public Player(String sPlayerNameP) {
         this.sPlayerName = sPlayerNameP;
