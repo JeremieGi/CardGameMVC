@@ -6,42 +6,104 @@
     tools:context=".Game.View.GameFragment"
     android:orientation="vertical">
 
-
-    <TextView
-        android:id="@+id/txtPlayer1_Name"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/name_of_player_1" />
+        tools:context=".Game.View.GameFragment"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:baselineAligned="false"
+        >
 
-    <TextView
-        android:id="@+id/txtPlayer1Card"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/player_1_card" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:context=".Game.View.GameFragment"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            >
 
-    <TextView
-        android:id="@+id/txtPlayer2_Name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/name_of_player_2" />
+            <TextView
+                android:id="@+id/txtPlayer1_Name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:layout_margin="20dp"
+                android:text="@string/name_of_player_1"
+                android:textSize="20sp"
+                tools:ignore="TextSizeCheck" />
 
-    <TextView
-        android:id="@+id/txtPlayer2_Card"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/player_2_card" />
+            <ImageView
+                android:id="@+id/imgPlayer1Card"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/player_1_card"
+                android:src="@drawable/_2c"
+                android:contentDescription="@string/player_1_card"
+                android:layout_gravity="center"
+                android:scaleType="fitCenter"
+                android:minHeight="200dp"
+                android:padding="10dp"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:context=".Game.View.GameFragment"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/txtPlayer2_Name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="20dp"
+                android:text="@string/name_of_player_2"
+                android:textSize="20sp"
+                tools:ignore="TextSizeCheck"
+                android:textAlignment="center"
+                />
+
+
+            <ImageView
+                android:id="@+id/imgPlayer2Card"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/player_2_card"
+                android:src="@drawable/_2h"
+                android:contentDescription="@string/player_2_card"
+                android:layout_gravity="center"
+                android:scaleType="fitCenter"
+                android:minHeight="200dp"
+                android:padding="10dp"
+                />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
 
     <Button
         android:id="@+id/btnPlay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/play" />
+        android:text="@string/play"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"/>
 
     <Button
         android:id="@+id/btnQuit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/quit"
+        android:layout_gravity="center"
 
         />
 

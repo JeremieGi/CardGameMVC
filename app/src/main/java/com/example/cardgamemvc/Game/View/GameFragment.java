@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.example.cardgamemvc.Game.Controller.GameController;
 import com.example.cardgamemvc.Game.Evaluators.HighCardGameEvaluator;
@@ -27,14 +28,15 @@ import com.example.cardgamemvc.databinding.FragmentGameBinding;
  */
 public class GameFragment extends Fragment implements IGameViewable {
 
+    public static final String ARG_PARAM_NAME_PLAYER1 = "ARG_P1_NAME";
+    public static final String ARG_PARAM_NAME_PLAYER2 = "ARG_P2_NAME";
+
     private FragmentGameBinding binding;
 
     private String sNamePlayer1;
     private String sNamePlayer2;
 
     GameController oController;
-
-    public static final String DOWN_CARD = "???"; // Carte retournée
 
     public GameFragment() {
         // Required empty public constructor
@@ -73,36 +75,52 @@ public class GameFragment extends Fragment implements IGameViewable {
 
             // Player 1
             case 1:
-                binding.txtPlayer1Card.setText(DOWN_CARD);
+                showDownCard(binding.imgPlayer1Card);
                 break;
 
             // Player 2
             case 2:
-                binding.txtPlayer2Card.setText(DOWN_CARD);
+                showDownCard(binding.imgPlayer2Card);
                 break;
 
         }
 
     }
 
+    private void showDownCard(ImageView imgViewP) {
+        imgViewP.setImageResource(R.drawable.backcard);
+    }
+
     @Override
-    public void showCardForPlayer(int nIndexPlayerP, String sNamePlayerP, String sRankP, String sSuitP) {
+    public void showCardForPlayer(int nIndexPlayerP, String sNamePlayerP, int nIdRessourceP)  {
 
-        String sValCard = sRankP+"-"+sSuitP;
 
-        switch (nIndexPlayerP) {
+        if (nIdRessourceP != 0) {
+            // L'ID de la ressource drawable a été trouvée
+            switch (nIndexPlayerP) {
 
-            // Player 1
-            case 1:
-                binding.txtPlayer1Card.setText(sValCard);
-                break;
+                // Player 1
+                case 1:
+                    binding.imgPlayer1Card.setImageResource(nIdRessourceP);
+                    break;
 
-            // Player 2
-            case 2:
-                binding.txtPlayer2Card.setText(sValCard);
-                break;
+                // Player 2
+                case 2:
+                    binding.imgPlayer2Card.setImageResource(nIdRessourceP);
+                    break;
+
+            }
+        } else {
+            // La ressource drawable n'a pas été trouvée
 
         }
+
+
+
+
+
+
+
 
     }
 
@@ -140,13 +158,9 @@ public class GameFragment extends Fragment implements IGameViewable {
      * @return A new instance of fragment GameFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static GameFragment newInstance(String sNamePlayer1P, String sNamePlayer2P) {
+    public static GameFragment newInstance() {
 
         GameFragment fragment = new GameFragment();
-
-        fragment.sNamePlayer1 = sNamePlayer1P;
-        fragment.sNamePlayer2 = sNamePlayer2P;
-
         return fragment;
     }
 
@@ -154,6 +168,11 @@ public class GameFragment extends Fragment implements IGameViewable {
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
+        if (getArguments() != null) {
+            sNamePlayer1 = getArguments().getString(ARG_PARAM_NAME_PLAYER1);
+            sNamePlayer2 = getArguments().getString(ARG_PARAM_NAME_PLAYER2);
+        }
 
         // exemple d'utilisation d'une factory pour créer les jeus de carte
         Deck oDeck = DeckFactory.createDeck(DeckFactory.EDeskType.normal);
@@ -191,8 +210,8 @@ public class GameFragment extends Fragment implements IGameViewable {
         oController.addPlayer(sNamePlayer1);
         oController.addPlayer(sNamePlayer2);
 
-        binding.txtPlayer1Card.setText(DOWN_CARD);
-        binding.txtPlayer2Card.setText(DOWN_CARD);
+        showDownCard(binding.imgPlayer1Card);
+        showDownCard(binding.imgPlayer2Card);
 
         binding.btnPlay.setOnClickListener(view1 -> {
             oController.startGame();

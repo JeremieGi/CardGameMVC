@@ -94,7 +94,7 @@ public class GameController {
             // Retourne la 1ere carte de leur main
             PlayingCard oCardFlipped = p.getCard(0);
             oCardFlipped.flip();
-            oView.showCardForPlayer(nIndexPlayer, p.getsPlayerName(),oCardFlipped.getRank().toString(), oCardFlipped.getSuit().toString());
+            oView.showCardForPlayer(nIndexPlayer, p.getsPlayerName(),oCardFlipped.oRessourceName());
 
             nIndexPlayer++;
         }

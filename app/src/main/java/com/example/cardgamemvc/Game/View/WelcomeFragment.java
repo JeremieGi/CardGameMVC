@@ -72,11 +72,13 @@ public class WelcomeFragment extends Fragment {
 
             boolean bPlayersNamed = true;
 
+            // Vérification que le nom du player 1 est bien renseigné
             if (sNamePlayer1.isEmpty()){
                 Toast.makeText(this.getContext(), "Please enter the name of player 1", Toast.LENGTH_SHORT).show();
                 bPlayersNamed = false;
             }
 
+            // Vérification que le nom du player 2 est bien renseigné
             if (sNamePlayer2.isEmpty()){
                 Toast.makeText(this.getContext(), "Please enter the name of player 2", Toast.LENGTH_SHORT).show();
                 bPlayersNamed = false;
@@ -87,7 +89,14 @@ public class WelcomeFragment extends Fragment {
                 // Ouvre le jeu
                 FragmentManager fragmentManager = getParentFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                GameFragment gameFragment = GameFragment.newInstance(sNamePlayer1,sNamePlayer2);
+                GameFragment gameFragment = GameFragment.newInstance();
+
+                // Passage en paramètre des 2 noms de joueurs
+                Bundle args = new Bundle();
+                args.putString(GameFragment.ARG_PARAM_NAME_PLAYER1,sNamePlayer1);
+                args.putString(GameFragment.ARG_PARAM_NAME_PLAYER2,sNamePlayer2);
+                gameFragment.setArguments(args);
+
                 fragmentTransaction.replace(R.id.fragment_main, gameFragment);
                 fragmentTransaction.commit();
             }
