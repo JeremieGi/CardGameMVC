@@ -13,17 +13,17 @@ public class GameController {
 
 
     // Echange avec la vue
-    IGameViewable oView;
+    final IGameViewable oView;
 
     // Echange avec le Model
-    Deck oDeck;
-    List<Player> aPlayers;
+    final Deck oDeck;
+    final List<Player> aPlayers;
 
     Player oWinner;
 
     // Variables propres au controller
 
-    GameEvaluator oEvaluator;
+    final GameEvaluator oEvaluator;
 
     public GameController(IGameViewable viewP, Deck deckP, GameEvaluator oEvaluatorP) {
 

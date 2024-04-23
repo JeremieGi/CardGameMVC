@@ -7,4 +7,6 @@
     <string name="name_of_player_2">Name of Player 2</string>
     <string name="player_2_card">Player 2 Card</string>
     <string name="quit">Quit</string>
+    <string name="score_1">Score 1</string>
+    <string name="score_2">Score 2</string>
 </resources>

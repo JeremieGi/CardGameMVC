@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.example.cardgamemvc.BuildConfig;
 import com.example.cardgamemvc.Game.Controller.GameController;
 import com.example.cardgamemvc.Game.Evaluators.HighCardGameEvaluator;
 import com.example.cardgamemvc.Game.Model.Deck;
@@ -65,7 +66,12 @@ public class GameFragment extends Fragment implements IGameViewable {
                 binding.txtPlayer2Name.setText(sNamePlayerP);
                 break;
 
+            default :
+                if(BuildConfig.ENABLE_ASSERTIONS){
+                    assert false : "Index player incorrect : "+nIndexPlayerP;
+                }
         }
+
 
 
     }
@@ -84,6 +90,11 @@ public class GameFragment extends Fragment implements IGameViewable {
             case 2:
                 showDownCard(binding.imgPlayer2Card);
                 break;
+
+            default :
+                if(BuildConfig.ENABLE_ASSERTIONS){
+                    assert false : "Index player incorrect : "+nIndexPlayerP;
+                }
 
         }
 
@@ -114,15 +125,10 @@ public class GameFragment extends Fragment implements IGameViewable {
             }
         } else {
             // La ressource drawable n'a pas été trouvée
-//            if (BuildConfig.DEBUG) {
-//                assert condition : "Message d'erreur";
-//            }
+            if (BuildConfig.DEBUG) {
+                assert false : "Ressource non trouvée";
+            }
         }
-
-
-
-
-
 
 
 
@@ -237,6 +243,11 @@ public class GameFragment extends Fragment implements IGameViewable {
         if (aScores.size() == 2){
             binding.txtPlayer1Score.setText(aScores.get(0).toString());
             binding.txtPlayer2Score.setText(aScores.get(1).toString());
+        }
+        else{
+            if (BuildConfig.ENABLE_ASSERTIONS) {
+                assert false : aScores.size()+" scores alors qu'il devrait y en avoir 2 exactement";
+            }
         }
 
     }

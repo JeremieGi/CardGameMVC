@@ -23,9 +23,12 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-
+            buildConfigField("boolean", "ENABLE_ASSERTIONS", "false")
         }
-
+        debug {
+            buildConfigField("boolean", "ENABLE_ASSERTIONS", "true")
+            android.buildFeatures.buildConfig = true
+        }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8

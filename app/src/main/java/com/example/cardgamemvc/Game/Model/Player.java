@@ -3,11 +3,11 @@ package com.example.cardgamemvc.Game.Model;
 public class Player {
 
 
-    private String sPlayerName;
+    private final String sPlayerName;
 
     private int nScore;
 
-    private Hand oHand = new Hand();
+    private final Hand oHand = new Hand();
 
     public Player(String sPlayerNameP) {
         this.sPlayerName = sPlayerNameP;

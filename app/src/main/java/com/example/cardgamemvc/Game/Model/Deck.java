@@ -10,7 +10,7 @@ import java.util.Random;
  */
 public abstract class Deck {
 
-    protected List<PlayingCard> aCards = new ArrayList<PlayingCard>();
+    protected final List<PlayingCard> aCards = new ArrayList<PlayingCard>();
 
 
 
@@ -38,7 +38,7 @@ public abstract class Deck {
 
     /**
      * Remet la carte dans le paquet
-     * @param oCardP
+     * @param : Carte retournée
      */
     public void returnCardToDeck(PlayingCard oCardP){
         aCards.add(oCardP);
