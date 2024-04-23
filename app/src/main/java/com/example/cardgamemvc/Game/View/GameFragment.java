@@ -112,7 +112,9 @@ public class GameFragment extends Fragment implements IGameViewable {
             }
         } else {
             // La ressource drawable n'a pas été trouvée
-
+//            if (BuildConfig.DEBUG) {
+//                assert condition : "Message d'erreur";
+//            }
         }
 
 
@@ -157,11 +159,9 @@ public class GameFragment extends Fragment implements IGameViewable {
      *
      * @return A new instance of fragment GameFragment.
      */
-    // TODO: Rename and change types and number of parameters
     public static GameFragment newInstance() {
 
-        GameFragment fragment = new GameFragment();
-        return fragment;
+        return new GameFragment();
     }
 
     @Override
