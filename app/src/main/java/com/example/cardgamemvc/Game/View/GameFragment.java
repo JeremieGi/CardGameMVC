@@ -21,6 +21,8 @@ import com.example.cardgamemvc.Game.Model.DeckFactory;
 import com.example.cardgamemvc.R;
 import com.example.cardgamemvc.databinding.FragmentGameBinding;
 
+import java.util.List;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link GameFragment#newInstance} factory method to
@@ -213,14 +215,29 @@ public class GameFragment extends Fragment implements IGameViewable {
         showDownCard(binding.imgPlayer1Card);
         showDownCard(binding.imgPlayer2Card);
 
+        showScore();
+
+
         binding.btnPlay.setOnClickListener(view1 -> {
             oController.startGame();
             oController.flipCards();
+            showScore();
         });
 
         binding.btnQuit.setOnClickListener(view1 -> {
             goToWelcomeFragment();
         });
+
+    }
+
+    private void showScore() {
+
+        List<Integer> aScores = oController.getScores();
+
+        if (aScores.size() == 2){
+            binding.txtPlayer1Score.setText(aScores.get(0).toString());
+            binding.txtPlayer2Score.setText(aScores.get(1).toString());
+        }
 
     }
 }

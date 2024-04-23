@@ -18,6 +18,7 @@ public class GameController {
     // Echange avec le Model
     Deck oDeck;
     List<Player> aPlayers;
+
     Player oWinner;
 
     // Variables propres au controller
@@ -30,7 +31,6 @@ public class GameController {
         this.oDeck = deckP;
 
         this.aPlayers = new ArrayList<Player>();
-
 
         this.oView.setController(this);
 
@@ -135,7 +135,25 @@ public class GameController {
         // Les règles du jeu seront dans un autre classe qui aura uniquement ce role)
         oWinner = oEvaluator.evaluateWinner(aPlayers);
 
+        oWinner.incrementeScore();
+
     }
 
+    /**
+     *
+     * @return Liste des scores de tous les joueurs
+     */
+    public List<Integer> getScores() {
+
+        List<Integer> aScores = new ArrayList<>();
+
+        // Pour tous les joueurs
+        for (Player p : aPlayers){
+            aScores.add(p.getScore());
+        }
+
+        return aScores;
+
+    }
 
 }
