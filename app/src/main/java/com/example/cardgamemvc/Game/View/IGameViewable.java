@@ -14,7 +14,7 @@ public interface IGameViewable {
 
     public void showFaceDownCardForPlayer(int nIndexPlayerP, String sNamePlayerP);
 
-    public void showCardForPlayer(int nIndexPlayerP, String sNamePlayerP, int nIDRessourceP);
+    public void showCardForPlayer(int nIndexPlayerP, String sNamePlayerP, int nIDRessourceP, String sRessourceNameP);
 
 
     public void showWinner(String sWinnerNameP);

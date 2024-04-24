@@ -28,56 +28,56 @@ public class PlayingCard {
         bFaceUp = !bFaceUp;
     }
 
-//
-//    /**
-//     *
-//     * @return Nom de la ressource associée à la carte
-//     */
-//    public String sRessourceName() {
-//
-//        // Je n'ai pas réussi à afficher côté UI une ressource à partir de son nom (getIdentifier)...
-//        // => j'ai du écrire oRessourceName
-//
-//        String sRessourceName = "_"; // Toutes les images de cartes commencent par _
-//
-//        String sValue = String.valueOf(oRank.value());
-//
-//        switch (oRank){
-//            case JACK :
-//                sValue = "j";
-//                break;
-//            case QUEEN :
-//                sValue = "q";
-//                break;
-//            case KING :
-//                sValue = "k";
-//                break;
-//            case ACE :
-//                sValue = "a";
-//                break;
-//        }
-//
-//        sRessourceName += sValue;
-//
-//        switch (oSuit){
-//            case DIAMONDS  :
-//                sRessourceName += "d";
-//                break;
-//            case HEARTS :
-//                sRessourceName += "h";
-//                break;
-//            case SPADES :
-//                sRessourceName += "s";
-//                break;
-//            case CLUBS :
-//                sRessourceName += "c";
-//                break;
-//        }
-//
-//        sRessourceName += ".gif";
-//
-//        return sRessourceName;
-//    }
+
+    /**
+     *
+     * @return Nom de la ressource associée à la carte
+     */
+    public String sRessourceName() {
+
+        // Je n'ai pas réussi à afficher côté UI une ressource à partir de son nom (getIdentifier)...
+        // => j'ai du écrire oRessourceName
+
+        String sRessourceName = "_"; // Toutes les images de cartes commencent par _
+
+        String sValue = String.valueOf(oRank.value());
+
+        switch (oRank){
+            case JACK :
+                sValue = "j";
+                break;
+            case QUEEN :
+                sValue = "q";
+                break;
+            case KING :
+                sValue = "k";
+                break;
+            case ACE :
+                sValue = "a";
+                break;
+        }
+
+        sRessourceName += sValue;
+
+        switch (oSuit){
+            case DIAMONDS  :
+                sRessourceName += "d";
+                break;
+            case HEARTS :
+                sRessourceName += "h";
+                break;
+            case SPADES :
+                sRessourceName += "s";
+                break;
+            case CLUBS :
+                sRessourceName += "c";
+                break;
+        }
+
+        sRessourceName += ".gif";
+
+        return sRessourceName;
+    }
 
     public int oRessourceName() {
 

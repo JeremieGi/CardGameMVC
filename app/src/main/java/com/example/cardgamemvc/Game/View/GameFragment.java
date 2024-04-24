@@ -105,8 +105,11 @@ public class GameFragment extends Fragment implements IGameViewable {
     }
 
     @Override
-    public void showCardForPlayer(int nIndexPlayerP, String sNamePlayerP, int nIdRessourceP)  {
+    public void showCardForPlayer(int nIndexPlayerP, String sNamePlayerP, int nIdRessourceP, String sRessourceNameP)  {
 
+        // nID toujours à 0 (c'est pour çà que j'utilise nIdRessourceP ici...
+        // Je ne comprends pas pourquoi (si çà fonctionnait, je pourrai simplifier mon code métier)
+        int nID = getResources().getIdentifier(sRessourceNameP,"drawable", getActivity().getPackageName());
 
         if (nIdRessourceP != 0) {
             // L'ID de la ressource drawable a été trouvée
