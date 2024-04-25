@@ -31,7 +31,7 @@
             android:minHeight="48dp"
             android:minWidth="300dp"
             android:hint="@string/name_of_player_1"
-            android:inputType="text"
+            android:inputType="textPersonName"
             android:autofillHints="" />
 
         <EditText
@@ -43,7 +43,7 @@
             android:minHeight="48dp"
             android:minWidth="300dp"
             android:hint="@string/name_of_player_2"
-            android:inputType="text"
+            android:inputType="textPersonName"
             android:autofillHints="" />
 
         <Button
